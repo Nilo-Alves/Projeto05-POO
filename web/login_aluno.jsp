@@ -6,7 +6,7 @@
     String loginErrorMessage = null;
     if(request.getParameter("do-login")!= null){
         String login = request.getParameter("nome");
-        String pass = request.getParameter("id");
+        String pass = request.getParameter("matricula");
         try{
             Aluno a = Aluno.getAluno(login, pass);
             if(a==null){
