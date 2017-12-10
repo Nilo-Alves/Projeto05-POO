@@ -4,17 +4,52 @@ forma simplificada para fins didáticos...
  */
 package com.notas.web;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class Professor {
 
-    private int matricula;
+    private int id;
     private String nome;
+    private String login;
+    private String senha;
 
-    public int getMatricula() {
-        return matricula;
+     public static Professor getProfessor(String login, String password) throws SQLException{
+     /*  
+         ***Modificar de acordo com o Banco de Dados***
+         
+         
+         String SQL = "SELECT * FROM users WHERE login=? AND pass_hash=?";
+        PreparedStatement s = Database.getConnection().prepareStatement(SQL);
+        s.setString(1, login);
+        s.setString(2, password.hashCode()+"");
+        ResultSet rs = s.executeQuery();
+        */Professor p = null;
+        /*if(rs.next()){
+            p = new Professor(rs.getInt("id")
+                    , rs.getString("name")
+                    , rs.getString("login")
+                    , rs.getString("pass_hash"));
+        }
+        rs.close();
+        s.close();*/
+        return p; 
+    }
+     
+    public Professor(int id, String nome, String login, String senha) {
+        this.id = id;
+        this.nome = nome;
+        this.login = login;
+        this.senha = senha;
     }
 
-    public void setMatricula(int matricula) {
-        this.matricula = matricula;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -25,10 +60,21 @@ public class Professor {
         this.nome = nome;
     }
 
-    public Professor(int matricula, String nome) {
-        this.matricula = matricula;
-        this.nome = nome;
+    public String getLogin() {
+        return login;
     }
-    
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+ 
     
 }
