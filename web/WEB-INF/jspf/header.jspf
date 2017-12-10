@@ -1,0 +1,49 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+
+<%
+    if(request.getParameter("do-logoff")!= null){
+        if(request.getParameter("permissao") == "aluno"){
+            session.removeAttribute("a.matricula");
+            session.removeAttribute("a.nome");
+            session.removeAttribute("a.login");
+            session.removeAttribute("a.senha");
+        }else{
+            session.removeAttribute("prof.id");
+            session.removeAttribute("prof.nome");
+            session.removeAttribute("prof.login");
+            session.removeAttribute("prof.senha");
+        }
+    }
+    response.sendRedirect(request.getContextPath()+"/index.jsp");    
+%>
+<h1>WebNota 2017</h1>
+<%  
+    Object nome;
+    if(session.getAttribute("permissao") == "aluno"){
+        nome = session.getAttribute("a.nome");
+    }else{
+        nome = session.getAttribute("prof.nome");
+    }
+      
+   // if(session.getAttribute("me.login")!=null){%>
+    <form>
+        Bem vindo, <%=nome%>!
+        <input type="submit" name="do-logoff" value="Sair"/>
+    </form>
+    <hr/>
+    <div>
+        <a href="stays.jsp">PERFIL</a> | 
+        <a href="history.jsp">NOTAS</a> | 
+        <a href="prices.jsp">CADASTRO DE NOTAS</a>
+    </div>
+<%//}%>
+
+<!--    ALTERAR QUANDO TIVER BANCO DE DADOS
+<% // if(Database.getConnectionException()!=null){%>
+    <div style="color: red;">
+        Erro ao tentar conexão com o banco de dados:
+        <%= //Database.getConnectionException().getMessage()%>
+    </div>
+<%//}%> -->
+<hr/>
