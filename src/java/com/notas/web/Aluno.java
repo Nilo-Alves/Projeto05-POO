@@ -1,6 +1,5 @@
 package com.notas.web;
 
-import java.util.ArrayList;
 
 public class Aluno {
     private String nome;
