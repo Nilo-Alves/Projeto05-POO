@@ -19,7 +19,7 @@ terá acesso posteriormente...
         <h1>Selecione o seu perfil!</h1>
         <fieldset>
             
-            <legend>Você é...</legend>
+            <legend>Cadastrar como: </legend>
             <a href="professor.jsp">Professor</a>
             <a href="aluno.jsp">Aluno</a>
         
