@@ -106,7 +106,7 @@ public class DatabaseCreatorListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         try{
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
-            String url = "jdbc:derby:c:/derby/WebParkingDb;create=true";
+            String url = "jdbc:derby:c:/derby/NotasWeb;create=true";
             Connection c =DriverManager.getConnection(url);
             Statement s = c.createStatement();
             System.out.println(new Date());
