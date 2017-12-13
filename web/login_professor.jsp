@@ -32,9 +32,10 @@
     <body>
         <h1>Sistema de Nota Online!</h1>
         <fieldset>
+            <legend>Caro professor, digite seu nome e senha para cadastrar notas</legend>
             <form method = "post">
                 Nome:<input type="text" name="login" value=""><br/><br/>
-                ID:<input type="number" name="id" value=""><br/><br/>
+                Senha<input type="password" name="pass" value=""><br/><br/>
                 <input type="submit" name="do-login" value="Login">
                 <a href="registro.jsp">Registre-se</a>
             </form>
