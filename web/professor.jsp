@@ -13,12 +13,18 @@
     </head>
     <body>
         <h1>Bem vindo/a Professor(a)!</h1>
-        <fieldset>
+        <fieldset style="width:175px; margin:0px auto;">
             <legend>FAÇA PARTE DO TIME!</legend>
             <form>
-                Nome:<input type="text" name="nome" value="Nome completo..."><br/><br/>
-                Matricula:<input type="number" name="matricula"><br/><br/>
-                <input type="submit" name="gravar" value="Gravar">
+                Nome:<br/>
+                <input type="text" name="nome" value="Nome completo..."><br/><br/>
+                ID:<br/>
+                <input type="number" name="matricula"><br/><br/>
+                Email:<br/>
+                <input type="text" name="email" value="E-mail"><br/><br/>
+                Senha:<br/>
+                <input type="password" name="pass"<br/><br/>
+                <input type="submit" name="gravar" value="Cadastrar">
                 <a href="home.jsp">HOME</a>
             </form>
         </fieldset>
