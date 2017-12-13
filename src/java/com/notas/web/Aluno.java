@@ -1,8 +1,8 @@
 package com.notas.web;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-
-
 public class Aluno {
     private String nome;
     private String matricula;
@@ -10,25 +10,34 @@ public class Aluno {
     private String senha;
     
      public static Aluno getAluno(String login, String password) throws SQLException{
-     /*  
-         ***Modificar de acordo com o Banco de Dados***
-         
-         
-         String SQL = "SELECT * FROM users WHERE login=? AND pass_hash=?";
+        String SQL = "SELECT * FROM users WHERE login=? AND pass_hash=?";
         PreparedStatement s = Database.getConnection().prepareStatement(SQL);
         s.setString(1, login);
         s.setString(2, password.hashCode()+"");
         ResultSet rs = s.executeQuery();
-        */Aluno a = null;
-        /*if(rs.next()){
-            p = new Professor(rs.getInt("id")
+        Aluno a = null;
+        if(rs.next()){
+            a = new Aluno(rs.getString("matricula")
                     , rs.getString("name")
                     , rs.getString("login")
                     , rs.getString("pass_hash"));
         }
         rs.close();
-        s.close();*/
+        s.close();
         return a; 
+    }
+     public static void insertAluno(String nome, String matricula, String email, String senha) throws SQLException{
+        try{
+         String SQL = "INSERT INTO aluno(nm_aluno, cd_matricula, nm_email_aluno, pass_hash VALUES('"
+                +nome+"', '"+matricula+"','"+email+"', '"+senha+"' ) ";
+        PreparedStatement s = Database.getConnection().prepareStatement(SQL);       
+        
+            ResultSet rs = s.executeQuery();
+            rs.close();
+        s.close();
+        }catch(Exception ex){
+            System.out.println("<h1>Erro ao gravar aluno: " + ex);
+        }                
     }
      public Aluno(String nome, String matricula, String login, String senha) {
         this.nome = nome;
