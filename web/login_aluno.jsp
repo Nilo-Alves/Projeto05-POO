@@ -33,10 +33,10 @@
     <body>
         <h1>Sistema de Nota Online!</h1>
         <fieldset>
-            <legend>Bem vindo(a):</legend>
+            <legend>Caro aluno, digite seu nome e senha para ter acesso a suas notas</legend>
             <form method = "post">
                 Nome:<input type="text" name="nome" value=""><br/><br/>
-                Matrícula:<input type="number" name="matricula" value=""><br/><br/>
+                Senha<input type="password" name="pass" value=""><br/><br/>
                 <input type="submit" name="do-login" value="Login">
                 
             </form>
