@@ -7,28 +7,52 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 public class DatabaseCreatorListener implements ServletContextListener {
-    private void createUsuarioTable(Statement s){
+    private void createAlunoTable(Statement s){
         try{
-            s.execute(  "CREATE TABLE usuario(\n" +
-                        "    cd_usuario INTEGER NOT NULL GENERATED ALWAYS \n" +
+            s.execute(  "CREATE TABLE aluno(\n" +
+                        "    cd_aluno INTEGER NOT NULL GENERATED ALWAYS \n" +
                         "        AS IDENTITY (START WITH 1, INCREMENT BY 1)\n" +
-                        "    , nm_usuario VARCHAR(50) not null\n" +
-                        "    , nm_email VARCHAR(50)  not null\n" +
+                        "    , cd_matricula VARCHAR(10) not null\n" +
+                        "    , nm_aluno VARCHAR(50) not null\n" +
+                        "    , nm_email_aluno VARCHAR(50)  not null\n" +
                         "    , pass_hash VARCHAR(200) not null\n" +
-                        "    , cd_tipo_usuario NUMBER(1) NOT NULL" +
                         ")"
                     );
-            System.out.println("Criada tabela USUARIO.");
-             s.execute("INSERT INTO USUARIO VALUES("
+            System.out.println("Criada tabela ALUNO.");
+             s.execute("INSERT INTO ALUNO VALUES("
                 + "default"
-                + ", 'Administrador do Sistema'"
-                + ", 'admin'"
+                + "MA12345"
+                + ", 'Aluno'"
+                + ", 'aluno'"
                 + ", '"+"1234".hashCode() +"'"
                 + ", 1"
                 + ")");
-            System.out.println("Usuário admin criado com a senha '1234'.");
+            System.out.println("Usuário aluno criado com a senha '1234'.");
         }catch(Exception ex2){
-            System.out.println("Ero ao criar a tabela USUARIO: "+ex2.getMessage());
+            System.out.println("Erro ao criar a tabela ALUNO: "+ex2.getMessage());
+        }
+    }
+     private void createProfessorTable(Statement s){
+        try{
+            s.execute(  "CREATE TABLE professor(\n" +
+                        "    cd_professor INTEGER NOT NULL GENERATED ALWAYS \n" +
+                        "        AS IDENTITY (START WITH 1, INCREMENT BY 1)\n" +
+                        "    , nm_professor VARCHAR(50) not null\n" +
+                        "    , nm_email_professor VARCHAR(50)  not null\n" +
+                        "    , pass_hash VARCHAR(200) not null\n" +
+                        ")"
+                    );
+            System.out.println("Criada tabela PROFESSOR.");
+             s.execute("INSERT INTO PROFESSOR VALUES("
+                + "default"
+                + ", 'Professor'"
+                + ", 'professor'"
+                + ", '"+"1234".hashCode() +"'"
+                + ", 1"
+                + ")");
+            System.out.println("Usuário professor criado com a senha '1234'.");
+        }catch(Exception ex2){
+            System.out.println("Erro ao criar a tabela PROFESSOR: "+ex2.getMessage());
         }
     }
     private void createCursoTable(Statement s){
@@ -45,6 +69,7 @@ public class DatabaseCreatorListener implements ServletContextListener {
             System.out.println("Ero ao criar a users: "+ex2.getMessage());
         }
     }
+    
     private void createMateriaTable(Statement s){
         try{
             s.execute(  "CREATE TABLE materia(\n" +
@@ -86,7 +111,8 @@ public class DatabaseCreatorListener implements ServletContextListener {
             Statement s = c.createStatement();
             System.out.println(new Date());
             System.out.println("Iniciando a criação do BD.");
-            createUsuarioTable(s);
+            createAlunoTable(s);
+            createProfessorTable(s);
             createCursoTable(s);
             createMateriaTable(s);
             createBoletimTable(s);
