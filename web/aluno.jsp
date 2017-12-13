@@ -12,15 +12,19 @@ vamos pensar em deixar funcionando, depois pensamos no front-end
         <title>Cadastro Aluno</title>
     </head>
     <body>
-        <h1>Bem Vindo!</h1>
+        <h1>Bem Vindo/a Aluno(a)!</h1>
          <fieldset style="width:175px; margin:0px auto;">
             <legend>Novo Aluno</legend>
             <form>
                 Nome:<br/>
                 <input type="text" name="nome" required maxlength="50"/><br/><br/>
                 Matrícula:<br/>
-                <input type="text" name="cpf" required maxlength="11"/><br/><br/>
-                <input type="submit" name="add" value="Adicionar"/>
+                <input type="text" name="ra" required maxlength="11"/><br/><br/>
+                Email:<br/>
+                <input type="text" name="email"/><br/><br/>
+                Senha:<br/>
+                <input type="password" name="pass"/><br/><br/>               
+                <input type="submit" name="gravar" value="Cadastrar"/>
                 <a href="home.jsp">HOME</a>
             </form>
         </fieldset>
